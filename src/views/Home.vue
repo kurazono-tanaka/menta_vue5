@@ -13,9 +13,8 @@
 
         <label class="date-label">
           <div class="select">
-            <select v-model="year">
-              <option v-for="n in 21" :key="`first-${n}`">{{n+1967}}年（昭和{{n+42}}）</option>
-              <option v-for="n in 12" :key="`second-${n}`">{{n+1988}}年（平成{{n}}）</option>
+            <select v-model="yearValue">
+              <option v-for="(item,index) in yearList" :key="index">{{item}}</option>
             </select>
           </div>
           年
@@ -23,8 +22,8 @@
 
         <label class="date-label">
           <div class="select">
-            <select v-model="month">
-              <option v-for="n in 12" :key="n">{{n}}</option>
+            <select v-model="monthValue"  v-on:change="calculation">
+              <option v-for="(item,index) in monthList" :key="index">{{item}}</option>
             </select>
           </div>
           月
@@ -32,8 +31,8 @@
 
         <label  class="date-label">
           <div class="select">
-            <select v-model="date">
-              <option v-for="n in 31" :key="n">{{n}}</option>
+            <select v-model="dateValue">
+              <option v-for="(item,index) in dateList" :key="index">{{item}}</option>
             </select>
           </div>
           日
@@ -49,16 +48,34 @@
 
 
 <script>
+import definition from '@/helpers/definition';
+
 export default {
   name:'home',
   data () {
     return {
       gender: '',
-      year: 0,
-      month: 0,
-      date: 0,
+      yearList: definition.year,
+      monthList: definition.month,
+      dateList:[1],
+      yearValue: '1990年 (平成2)',
+      monthValue:'1',
+      dateValue:'1',
     }
   },
+  methods: {
+    calculation: function() {
+      const yearStr = this.yearValue;
+      const yearInt = yearStr.substr(0,4);
+      function getLastDay(year,month){
+        return new Date(year, month,0).getDate();
+      }
+      const dates = getLastDay(yearInt,this.monthValue);
+      for(let i=0;i<dates;i++) {
+        this.dateList[i]=i+1;
+      }
+    }
+  }
 }
 </script>
 
