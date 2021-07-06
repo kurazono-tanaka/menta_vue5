@@ -22,7 +22,7 @@
 
         <label class="date-label">
           <div class="select">
-            <select v-model="monthValue"  v-on:change="calculation">
+            <select v-model="monthValue"  @change="calculation">
               <option v-for="(item,index) in monthList" :key="index">{{item}}</option>
             </select>
           </div>
@@ -64,7 +64,7 @@ export default {
     }
   },
   methods: {
-    calculation: function() {
+    calculation() {
       const yearStr = this.yearValue;
       const yearInt = yearStr.substr(0,4);
       function getLastDay(year,month){
