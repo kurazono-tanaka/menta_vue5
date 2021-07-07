@@ -2,19 +2,25 @@
   <div id="home" class="parent">
     <div class="content">
       <div class="header">
-         <p class="step">STEP1</p>
-         <p>お客様の情報を入力してください</p>
+        <p class="step">STEP1</p>
+        <p>お客様の情報を入力してください</p>
       </div>
       <div class="main">
         <p class="category">-性別-</p>
-        <label class="radio"><input type="radio" value="man" v-model="gender">男性</label>
-        <label class="radio"><input type="radio" value="woman" v-model="gender">女性</label>
+        <label class="radio"
+          ><input type="radio" value="男性" v-model="gender" />男性</label
+        >
+        <label class="radio"
+          ><input type="radio" value="女性" v-model="gender" />女性</label
+        >
         <p class="category date">-生年月日-</p>
 
         <label class="date-label">
           <div class="select">
-            <select v-model="yearValue">
-              <option v-for="(item,index) in yearList" :key="index">{{item}}</option>
+            <select v-model="yearValue" @change="calculation">
+              <option v-for="(item, index) in yearList" :key="index">{{
+                item
+              }}</option>
             </select>
           </div>
           年
@@ -22,17 +28,21 @@
 
         <label class="date-label">
           <div class="select">
-            <select v-model="monthValue"  @change="calculation">
-              <option v-for="(item,index) in monthList" :key="index">{{item}}</option>
+            <select v-model="monthValue" @change="calculation">
+              <option v-for="(item, index) in monthList" :key="index">{{
+                item
+              }}</option>
             </select>
           </div>
           月
         </label>
 
-        <label  class="date-label">
+        <label class="date-label">
           <div class="select">
-            <select v-model="dateValue">
-              <option v-for="(item,index) in dateList" :key="index">{{item}}</option>
+            <select v-model="dateValue" @change="calculation">
+              <option v-for="(item, index) in dateList" :key="index">{{
+                item
+              }}</option>
             </select>
           </div>
           日
@@ -40,42 +50,46 @@
       </div>
     </div>
     <div class="button-style">
-      <button class="button is-primary"><router-link to="/questionnaire" class="button-kigou">次へ進む</router-link></button>
+      <button class="button is-primary" @click="setStep1">
+        <router-link to="/questionnaire" class="button-kigou"
+          >次へ進む</router-link
+        >
+      </button>
     </div>
     <router-view />
   </div>
 </template>
 
-
 <script>
-import definition from '@/helpers/definition';
+import definition from "@/helpers/definition";
 
 export default {
-  name:'home',
-  data () {
+  name: "home",
+  data() {
     return {
-      gender: '',
+      gender: "",
       yearList: definition.year,
       monthList: definition.month,
-      dateList:[1],
-      yearValue: '1990年 (平成2)',
-      monthValue:'1',
-      dateValue:'1',
-    }
+      dateList: definition.data,
+      yearValue: "1990年 (平成2)",
+      monthValue: "1",
+      dateValue: "1",
+    };
   },
   methods: {
     calculation() {
-      const yearStr = this.yearValue;
-      const yearInt = yearStr.substr(0,4);
-      function getLastDay(year,month){
-        return new Date(year, month,0).getDate();
-      }
-      const dates = getLastDay(yearInt,this.monthValue);
-      for(let i=0;i<dates;i++) {
-        this.dateList[i]=i+1;
-      }
-    }
-  }
-}
+      const obj = definition.days({
+        yearValue: this.yearValue,
+        monthValue: this.monthValue,
+      });
+      this.dateList = obj.dateList;
+    },
+    setStep1() {
+      this.$store.commit("setGender", this.gender);
+      this.$store.commit("setYear", this.yearValue);
+      this.$store.commit("setMonth", this.monthValue);
+      this.$store.commit("setDate", this.dateValue);
+    },
+  },
+};
 </script>
-

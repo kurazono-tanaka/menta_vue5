@@ -1,5 +1,5 @@
 <template>
-  <div id="consultation"  class="parent">
+  <div id="consultation" class="parent">
     <div class="content">
       <div class="header">
         <p class="step">STEP3</p>
@@ -12,22 +12,33 @@
     </div>
 
     <div class="button-style">
-      <button class="button is-primary button-aida"><router-link to="/questionnaire" class="button-kigou">前へ戻る</router-link></button>
-      <button class="button is-primary"><router-link to="/consultation" class="button-kigou">次へ進む</router-link></button>
+      <button class="button is-primary button-aida" @click="setStep3">
+        <router-link to="/questionnaire" class="button-kigou"
+          >前へ戻る</router-link
+        >
+      </button>
+      <button class="button is-primary" @click="setStep3">
+        <router-link to="/verification" class="button-kigou"
+          >次へ進む</router-link
+        >
+      </button>
     </div>
     <router-view />
   </div>
 </template>
 
-
 <script>
 export default {
-  name:'consultation',
-  data () {
+  name: "consultation",
+  data() {
     return {
-      text: '',
-    }
-  }
-}
-
+      text: "",
+    };
+  },
+  methods: {
+    setStep3() {
+      this.$store.commit("setText", this.text);
+    },
+  },
+};
 </script>

@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-  <router-link to="/"></router-link>
-  <router-view />
+    <router-link to="/"></router-link>
+    <router-view />
   </div>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style>
 html {
@@ -14,7 +13,7 @@ html {
 }
 
 body {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -22,12 +21,10 @@ body {
 }
 
 .parent {
-  width:700px;
-  /* background-color: yellow; */
+  width: 700px;
 }
 
 .content {
-  /* background-color: red; */
   border-radius: 5px;
   border: 1px solid #00a6a8;
 }
@@ -47,8 +44,8 @@ body {
   height: 20px;
   line-height: 20px;
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   color: white;
   background-color: #00bfff;
   border-radius: 2px;
@@ -70,11 +67,11 @@ body {
 
 .date-label {
   display: inline-block;
-  vertical-align:baseline;
+  vertical-align: baseline;
 }
 
 .button-style {
-  display:flex;
+  display: flex;
   justify-content: center;
 }
 
@@ -87,7 +84,7 @@ body {
   content: ">";
   margin-left: 10px;
   font-size: 0.5em;
-  vertical-align:2px;
+  vertical-align: 2px;
 }
 
 .button-aida {
@@ -101,7 +98,4 @@ body {
 .radio-step2 {
   margin-left: 20px;
 }
-
-
 </style>
-
