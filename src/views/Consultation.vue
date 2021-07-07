@@ -29,15 +29,15 @@
 
 <script>
 export default {
-  name: "consultation",
+  name: 'consultation',
   data() {
     return {
-      text: "",
+      text: '',
     };
   },
   methods: {
     setStep3() {
-      this.$store.commit("setText", this.text);
+      this.$store.commit('setText', this.text);
     },
   },
 };

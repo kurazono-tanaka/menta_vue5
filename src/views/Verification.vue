@@ -41,10 +41,10 @@
 
 <script>
 export default {
-  name: "verification",
+  name: 'verification',
   data() {
     return {
-      text: "",
+      text: '',
     };
   },
 };

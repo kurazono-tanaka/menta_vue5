@@ -1,12 +1,12 @@
 const state = {
-  gender: "",
-  yearValue: "1990年 (平成2)",
-  monthValue: "1",
-  dateValue: "1",
-  question1: "",
-  question2: "",
-  question3: "",
-  text: "",
+  gender: '',
+  yearValue: '1990年 (平成2)',
+  monthValue: '1',
+  dateValue: '1',
+  question1: '',
+  question2: '',
+  question3: '',
+  text: '',
 };
 
 const mutations = {

@@ -81,7 +81,7 @@ body {
 }
 
 .button-kigou::after {
-  content: ">";
+  content: '>';
   margin-left: 10px;
   font-size: 0.5em;
   vertical-align: 2px;

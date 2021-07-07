@@ -61,19 +61,19 @@
 </template>
 
 <script>
-import definition from "@/helpers/definition";
+import definition from '@/helpers/definition';
 
 export default {
-  name: "home",
+  name: 'home',
   data() {
     return {
-      gender: "",
+      gender: '',
       yearList: definition.year,
       monthList: definition.month,
       dateList: definition.data,
-      yearValue: "1990年 (平成2)",
-      monthValue: "1",
-      dateValue: "1",
+      yearValue: '1990年 (平成2)',
+      monthValue: '1',
+      dateValue: '1',
     };
   },
   methods: {
@@ -85,10 +85,10 @@ export default {
       this.dateList = obj.dateList;
     },
     setStep1() {
-      this.$store.commit("setGender", this.gender);
-      this.$store.commit("setYear", this.yearValue);
-      this.$store.commit("setMonth", this.monthValue);
-      this.$store.commit("setDate", this.dateValue);
+      this.$store.commit('setGender', this.gender);
+      this.$store.commit('setYear', this.yearValue);
+      this.$store.commit('setMonth', this.monthValue);
+      this.$store.commit('setDate', this.dateValue);
     },
   },
 };

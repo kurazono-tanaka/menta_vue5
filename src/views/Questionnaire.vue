@@ -62,19 +62,19 @@
 
 <script>
 export default {
-  name: "questionnaire",
+  name: 'questionnaire',
   data() {
     return {
-      question1: "",
-      question2: "",
-      question3: "",
+      question1: '',
+      question2: '',
+      question3: '',
     };
   },
   methods: {
     setStep2() {
-      this.$store.commit("setQuestion1", this.question1);
-      this.$store.commit("setQuestion2", this.question2);
-      this.$store.commit("setQuestion3", this.question3);
+      this.$store.commit('setQuestion1', this.question1);
+      this.$store.commit('setQuestion2', this.question2);
+      this.$store.commit('setQuestion3', this.question3);
     },
   },
 };
